@@ -1,5 +1,7 @@
 ﻿using ECommerce.DAL;
 using ECommerce.Models;
+using ECommerce.Utils;
+using System;
 using System.Web.Mvc;
 
 namespace ECommerce.Controllers
@@ -27,7 +29,8 @@ namespace ECommerce.Controllers
                 ProdutoVenda = produto,
                 Quantidade = 1,
                 PrecoVenda = produto.Preco,
-                Data = System.DateTime.Now
+                Data = System.DateTime.Now,
+                CarrinhoId = Sessao.RetornarCarrinhoId().ToString()
             };
 
             itemVendaDAO.Adicionar(itemVenda);
@@ -35,7 +38,7 @@ namespace ECommerce.Controllers
         }
         public ActionResult CarrinhoCompras()
         {
-            return View(itemVendaDAO.ListarItemVenda());
+            return View(itemVendaDAO.BuscarItensVendaPorCarrinhoId(Sessao.RetornarCarrinhoId().ToString()));
         }
     }
 }

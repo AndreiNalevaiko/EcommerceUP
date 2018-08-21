@@ -16,5 +16,6 @@ namespace ECommerce.Models
         public int Quantidade { get; set; }
         public double PrecoVenda { get; set; }
         public DateTime Data { get; set; }
+        public string CarrinhoId { get; set; }
     }
 }

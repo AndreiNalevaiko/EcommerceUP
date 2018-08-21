@@ -215,3 +215,4 @@ C:\Users\Jeff\Documents\ECommerce\ECommerce\ECommerce\obj\Debug\ECommerce.csproj
 C:\Users\Jeff\Documents\ECommerce\ECommerce\ECommerce\obj\Debug\ECommerce.dll
 C:\Users\Jeff\Documents\ECommerce\ECommerce\ECommerce\obj\Debug\ECommerce.pdb
 C:\Users\Aluno\Desktop\ECommerce\ECommerce\ECommerce\obj\Debug\ECommerce.Migrations.AddTableItemVenda.resources
+C:\Users\Aluno\Desktop\Ecommerce\ECommerce\ECommerce\obj\Debug\ECommerce.Migrations.AddCarrinhoID.resources
