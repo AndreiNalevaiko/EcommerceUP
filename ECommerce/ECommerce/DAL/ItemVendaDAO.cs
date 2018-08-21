@@ -33,7 +33,7 @@ namespace ECommerce.DAL
 
         public List<ItemVenda> BuscarItensVendaPorCarrinhoId(string carrinhoId)
         {
-            return context.ItensVenda.Where(x => x.CarrinhoId.Equals(carrinhoId)).ToList();
+            return context.ItensVenda.Include("ProdutoVenda").Where(x => x.CarrinhoId.Equals(carrinhoId)).ToList();
         }
     }
 }
