@@ -4,7 +4,7 @@
 @using ECommerce.Models
 @model List<Produto>
 
-<div>    
+<div>
     <h1>Gerenciamento de Produtos</h1>
 
     @Html.ActionLink("Cadastrar Produto", "Cadastrar", "Produto", null, new { @class = "nav-link" })
@@ -31,16 +31,16 @@
                     <td>@produto.Categoria.Nome</td>
 
                     <td>
-                        <img src="~/Imagens/@produto.Imagem" alt="Imagem do Produto" style="width:100px; height:100px"/>
+                        <img src="~/Imagens/@produto.Imagem" alt="Imagem do Produto" style="width:100px; height:100px" />
                     </td>
 
-                    <td>@Html.ActionLink("Remover", "Remover", "Produto", new { id = produto.ProdutoID }, new {@class = "btn btn-danger"})</td>
+                    <td>@Html.ActionLink("Remover", "Remover", "Produto", new { id = produto.ProdutoID }, new { @class = "btn btn-danger" })</td>
                     <td>@Html.ActionLink("Alterar", "Alterar", "Produto", new { id = produto.ProdutoID }, new { @class = "btn btn-warning" })</td>
                 </tr>
             }
         </tbody>
     </table>
 
-    <p>Dados atualizados às: <b>@DateTime.Now</b></p>
+    <!--<p>Dados atualizados às: <b>@DateTime.Now</b></p>-->
 
 </div>
