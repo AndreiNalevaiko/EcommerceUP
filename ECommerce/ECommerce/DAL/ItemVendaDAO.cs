@@ -1,5 +1,6 @@
 ﻿using ECommerce.Controllers;
 using ECommerce.Models;
+using ECommerce.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,5 +36,22 @@ namespace ECommerce.DAL
         {
             return context.ItensVenda.Include("ProdutoVenda").Where(x => x.CarrinhoId.Equals(carrinhoId)).ToList();
         }
+
+        public ItemVenda ItemCarrinho(Produto produto)
+        {
+            string carrinhoId = Sessao.RetornarCarrinhoId().ToString();
+            return context.ItensVenda.Include("ProdutoVenda").FirstOrDefault(x => x.ProdutoVenda.ProdutoID == produto.ProdutoID && x.CarrinhoId.Equals(carrinhoId));
+        }
+
+        public void Atualizar(ItemVenda item)
+        {
+            if (item != null)
+            {
+                context.Entry(item).State = System.Data.Entity.EntityState.Modified;
+                context.SaveChanges();
+            }
+        }
+
+
     }
 }

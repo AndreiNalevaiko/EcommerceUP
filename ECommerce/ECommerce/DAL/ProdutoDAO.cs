@@ -36,6 +36,7 @@ namespace ECommerce.DAL
             context.Produtos.Remove(produto);
             context.SaveChanges();
         }
+
         public Produto BuscarPorID(int? id)
         {
             return context.Produtos.Find(id);
