@@ -22,12 +22,13 @@ namespace ECommerce.DAL
             }
             return false;
         }
-        public void Remover(int id)
+        public void Remover(int? id)
         {
             context.ItensVenda.Remove(BuscarPorID(id));
             context.SaveChanges();
         }
-        public ItemVenda BuscarPorID(int id)
+
+        public ItemVenda BuscarPorID(int? id)
         {
             return context.ItensVenda.Find(id);
         }

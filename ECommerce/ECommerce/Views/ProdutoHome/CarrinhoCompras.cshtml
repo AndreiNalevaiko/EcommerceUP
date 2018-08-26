@@ -28,6 +28,12 @@
                 double subtotal = item.Quantidade * item.PrecoVenda;
             }
             <td>@subtotal.ToString("C2")</td>
+
+            <td>
+                @Html.ActionLink("Remover", "Remover", "ProdutoHome", new {id = item.ItemVendaID }, null)
+                @Html.ActionLink("-", "Decrementar", "PordutoHome", new { id = item.ItemVendaID}, null)
+                @Html.ActionLink("+", "Incrementar", "ProdutoHome", new { id = item.ItemVendaID}, null)
+            </td>
         </tr>
     }
 
