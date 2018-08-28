@@ -58,52 +58,16 @@ namespace ECommerce.Controllers
 
         public ActionResult Remover(int? id)
         {
-            ItemVenda item = itemVendaDAO.BuscarPorID(id);
-
-            if(item != null)
-            {
-                if(item.Quantidade == 1)
-                {
-                    itemVendaDAO.Remover(id);
-                }
-                else
-                {
-                    item.Quantidade--;
-                    itemVendaDAO.Atualizar(item);
-                }
-                
-            }
-
             return RedirectToAction("CarrinhoCompras");
         }
 
         public ActionResult Decrementar(int? id)
         {
-            ItemVenda item = itemVendaDAO.BuscarPorID(id);
-
-            if (item != null && item.Quantidade > 1)
-            {
-                item.Quantidade--;
-                itemVendaDAO.Atualizar(item);
-
-            }
-
             return RedirectToAction("CarrinhoCompras");
         }
 
         public ActionResult Incrementar(int? id)
         {
-            ItemVenda item = itemVendaDAO.BuscarPorID(id);
-
-            if(item == null)
-            {
-                return RedirectToAction("CarrinhoCompras");
-            }
-            else
-            {
-                item.Quantidade++;
-                itemVendaDAO.Atualizar(item);
-            }
 
             return RedirectToAction("CarrinhoCompras");
         }
