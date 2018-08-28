@@ -1,40 +1,45 @@
-﻿@model List<ECommerce.Models.ItemVenda>
-
+﻿@using ECommerce.Models
+@model List<ItemVenda>
 @{
+    double total = ViewBag.Total;
 }
 
-<h2>CarrinhoCompras</h2>
+<h2>Carrinho de Compras</h2>
 
-<table class="table">
+<table class="table table-hover table-striped" style="margin-bottom:30px">
     <tr>
-        <th></th>
+        <th>Imagem</th>
         <th>Produto</th>
         <th>Quantidade</th>
         <th>Preço</th>
         <th>Subtotal</th>
+        <th></th>
     </tr>
 
-    @foreach (var item in Model)
+    @foreach (ItemVenda item in Model)
     {
         <tr>
             <td>
-                <img src="~/Imagens/@item.ProdutoVenda.Imagem" alt="Imagem do Produto" style="width:100px; height:100px" />
+                <img src="~/Images/@item.ProdutoVenda.Imagem"
+                     alt="Imagem do produto"
+                     style="width:100px" />
             </td>
-            
             <td>@item.ProdutoVenda.Nome</td>
-            <td>@item.Quantidade</td>
+            <td style="box-sizing: border-box">
+                @Html.ActionLink("-", "Decrementar", "ProdutoHome", new { id = item.ItemVendaID }, new { @class = "btn btn-danger" })
+                @item.Quantidade
+                @Html.ActionLink("+", "Incrementar", "ProdutoHome", new { id = item.ItemVendaID }, new { @class = "btn btn-success" })
+            </td>
             <td>@item.PrecoVenda.ToString("C2")</td>
-            @{ 
+            @{
                 double subtotal = item.Quantidade * item.PrecoVenda;
             }
             <td>@subtotal.ToString("C2")</td>
-
-            <td>
-                @Html.ActionLink("Remover", "Remover", "ProdutoHome", new {id = item.ItemVendaID }, null)
-                @Html.ActionLink("-", "Decrementar", "PordutoHome", new { id = item.ItemVendaID}, null)
-                @Html.ActionLink("+", "Incrementar", "ProdutoHome", new { id = item.ItemVendaID}, null)
-            </td>
+            <td>@Html.ActionLink("Remover", "RemoverItem", "ProdutoHome", new { id = item.ItemVendaID }, null)</td>
         </tr>
     }
-
 </table>
+
+<div class="card text-white bg-success mb-3" style="max-width: 20%;">
+    <div class="card-header"><b>Total: </b> @total.ToString("C2")</div>
+</div>

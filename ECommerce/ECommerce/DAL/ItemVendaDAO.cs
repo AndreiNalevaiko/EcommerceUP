@@ -70,6 +70,7 @@ namespace ECommerce.DAL
             else
             {
                 context.ItensVenda.Remove(item);
+                context.SaveChanges();
             }
 
         }
@@ -77,7 +78,8 @@ namespace ECommerce.DAL
         public static void Incrementar(int id)
         {
             ItemVenda item = context.ItensVenda.Find(id);
-            item.Quantidade++;context.SaveChanges();
+            item.Quantidade++;
+            context.SaveChanges();
         }
 
         public static void Decrementar(int id)
@@ -93,6 +95,11 @@ namespace ECommerce.DAL
         public static double RetornarTotalDoCarrinho()
         {
             return BuscarItensVendaPorCarrinhoId().Sum(x => x.Quantidade * x.PrecoVenda);
+        }
+
+        public static int RetornarQuantidadeDoMenu()
+        {
+            return BuscarItensVendaPorCarrinhoId().Sum(x => x.Quantidade);
         }
 
 

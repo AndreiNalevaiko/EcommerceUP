@@ -53,23 +53,26 @@ namespace ECommerce.Controllers
 
         public ActionResult CarrinhoCompras()
         {
-            return View(itemVendaDAO.BuscarItensVendaPorCarrinhoId(Sessao.RetornarCarrinhoId().ToString()));
+            ViewBag.Total = ItemVendaDAO.RetornarTotalDoCarrinho();
+            return View(ItemVendaDAO.BuscarItensVendaPorCarrinhoId());
         }
 
-        public ActionResult Remover(int? id)
+        public ActionResult RemoverItem(int id)
         {
-            return RedirectToAction("CarrinhoCompras");
+            ItemVendaDAO.RemoverItem(id);
+            return RedirectToAction("CarrinhoCompras", "ProdutoHome");
         }
 
-        public ActionResult Decrementar(int? id)
+        public ActionResult Decrementar(int id)
         {
-            return RedirectToAction("CarrinhoCompras");
+            ItemVendaDAO.Decrementar(id);
+            return RedirectToAction("CarrinhoCompras", "ProdutoHome");
         }
 
-        public ActionResult Incrementar(int? id)
+        public ActionResult Incrementar(int id)
         {
-
-            return RedirectToAction("CarrinhoCompras");
+            ItemVendaDAO.Incrementar(id);
+            return RedirectToAction("CarrinhoCompras", "ProdutoHome");
         }
     }
 }
